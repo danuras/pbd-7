@@ -29,7 +29,7 @@ return(select * from Items)
 
 select * from Items
 
-select definition 
+select procedure 
 from sys.sql_modules
 
 show  status
@@ -46,3 +46,25 @@ END;
 select * from Customers
 
 exec sp_Display_CustomerData 'CUS-000001'
+
+create procedure luas(@masuk int, @sisi int output)
+	as
+	begin
+		select @sisi=@masuk * @masuk;
+	end
+
+declare @count int;
+
+exec luas 
+	@masuk = 5,
+	@sisi =  @count output;
+
+select @count
+
+delimiter 
+create procedure luasPersegi(@masuk int, @sisi int output)
+	as
+	begin
+		select @sisi=@masuk * @masuk;
+	end
+delimiter
